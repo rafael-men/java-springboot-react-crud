@@ -1,4 +1,3 @@
-
 package com.rafacrud.fullstackbackend.model;
 
 import jakarta.persistence.Entity;
@@ -6,17 +5,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 
+
+/* Created by Arjun Gautam */
 @Entity
 public class User {
-    
-      @Id
-      @GeneratedValue
-      private Long id;
-      private String username;
-      private String name;
-      private String email;
-      
-       public Long getId() {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String username;
+    private String name;
+    private String email;
+
+    public Long getId() {
         return id;
     }
 
