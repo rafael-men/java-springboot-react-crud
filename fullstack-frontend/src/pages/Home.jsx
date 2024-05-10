@@ -11,7 +11,7 @@ const Home = () => {
 
     const loadUsers = async () => {
         const result = await axios.get("http://localhost:8080/users")
-        console.log(result)
+        setUsers(result.data)
     }
 
   return (
@@ -20,30 +20,29 @@ const Home = () => {
         <table className="table border shadow">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Nickname</th>
+      <th scope="col">Email</th>
+      <th scope='col'>Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    {
+      users.map((user,index) => (
+        <tr>
+        <th scope="row" key={index}>{index+1}</th>
+        <td>{user.name}</td>
+        <td>{user.username}</td>
+        <td>{user.email}</td>
+        <td>
+          <button className='btn btn-dark mx-2'>View</button>
+          <button className='btn btn-warning mx-2'>Edit</button>
+          <button className='btn btn-outline-danger mx-2'>Delete</button>
+        </td>
+      </tr>
+      ))
+    }
   </tbody>
 </table>
         </div>

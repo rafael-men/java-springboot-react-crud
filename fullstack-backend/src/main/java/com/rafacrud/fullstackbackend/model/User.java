@@ -1,12 +1,10 @@
 package com.rafacrud.fullstackbackend.model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-
-
-/* Created by Arjun Gautam */
 @Entity
 public class User {
 
