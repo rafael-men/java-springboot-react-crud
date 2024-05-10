@@ -11,14 +11,42 @@ Database: MySQL
 
 Installation
 Clone this repository to your local machine.
+<hr>
+
+git clone https://github.com/rafael-men/java-springboot-react-crud
+
+
+<hr>
 
 Navigate to the project directory.
 
+<hr>
+
+cd java-springboot-react-crud
+
+<hr>
+
 Install dependencies for the frontend.
+
+<hr>
+
+npm i
+
+<hr>
 
 Configure the backend 
 
+<hr>
+
 Run the application.
+
+<hr>
+
+npm run start
+
+react-scripts-start
+
+<hr>
 
 For the frontend, you might use a development server.
 
