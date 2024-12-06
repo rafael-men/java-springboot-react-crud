@@ -1,19 +1,30 @@
 package com.rafacrud.fullstackbackend.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Objects;
 
 @Entity
+@Table(name = "users_tb")
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String name;
     private String email;
+
+    public User() {
+    }
+
+    public User(Long id, String username, String name, String email) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
@@ -45,5 +56,18 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        User user = (User) object;
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(name, user.name) && Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, name, email);
     }
 }

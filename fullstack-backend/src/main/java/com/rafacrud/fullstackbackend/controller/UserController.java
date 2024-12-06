@@ -25,13 +25,13 @@ public class UserController {
         return userRepository.save(newUser);
     }
 
-    @Operation(summary = "Get all users")
+    @Operation(summary = "Get All Users")
     @GetMapping("/users")
     List<User> getAllUsers () {
         return userRepository.findAll();
     }
 
-    @Operation(summary = "Get user by id")
+    @Operation(summary = "Get User By Id")
     @GetMapping("/user/{id}")
     User getUserById(@PathVariable Long id) {
         return userRepository.findById(id)
@@ -58,5 +58,23 @@ public class UserController {
         }
         userRepository.deleteById(id);
         return "Usuário de id " + id + " foi deletado com sucesso.";
+    }
+
+    @Operation(summary = "Half Update a User")
+    @PatchMapping("/user/{id}")                     //patch method
+    User halfUpdateUser(@RequestBody User newUser, @PathVariable Long id) {
+        return userRepository.findById(id)
+                .map(user -> {
+                    if(newUser.getUsername() != null) {
+                        user.setUsername(newUser.getUsername());
+                    }
+                    if(newUser.getName() != null) {
+                        user.setName(newUser.getName());
+                    }
+                    if(newUser.getEmail() != null) {
+                        user.setEmail(newUser.getEmail());
+                    }
+                    return userRepository.save(user);
+                }).orElseThrow(()-> new usernotfoundexception(id));
     }
 }
